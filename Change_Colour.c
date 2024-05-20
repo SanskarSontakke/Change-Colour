@@ -22,26 +22,26 @@ void change_colour_to_green()
 
 void change_colour_to_yellow()
 {
-    printf("\033[0;30m");
+    printf("\033[0;33m");
 }
 
 void change_colour_to_blue()
 {
-    printf("\033[0;30m");
+    printf("\033[0;34m");
 }
 
 void change_colour_to_purple()
 {
-    printf("\033[0;30m");
+    printf("\033[0;35m");
 }
 
 void change_colour_to_cyan()
 {
-    printf("\033[0;30m");
+    printf("\033[0;36m");
 }
 
 void change_colour_to_white()
 {
-    printf("\033[0;30m");
+    printf("\033[0;37m");
 }
 
