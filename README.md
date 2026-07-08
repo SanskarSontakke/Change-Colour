@@ -1,94 +1,65 @@
 # Change Colour Library
+> A lightweight C/C++ library for changing terminal text colors using ANSI escape codes.
 
-A simple and lightweight C/C++ library for changing terminal text colors using ANSI escape codes.
+![Change Colour Demo](change-color-demo.png)
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f2d41b74-cfe4-45c4-970e-5ad99f683105" />
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Language: C](https://img.shields.io/badge/Language-C-blue.svg)]()
 
-## Features
+## What it does
 
-- Usable from both C and C++ projects.
-- Change text color (8 standard ANSI colors).
-- Set text style (Normal or Bold).
-- Reset text formatting.
-- Easy to use helper functions for specific colors.
-- Builds a static library for easy linking.
+Provides functions to set terminal text foreground colors (8 standard ANSI colors), text styles (normal or bold), and reset formatting to default. Works from both C and C++ code. The library generates ANSI escape sequences at runtime and is compiled into a static library for easy linking.
 
-## File Structure
+## Why I built it
 
-- `lib/change_colour.h`: Header file with function prototypes and enums. Includes C++ `extern "C"` wrappers.
-- `lib/change_colour.c`: Implementation of the color changing functions.
-- `demo.c`: Demo program showcasing how to use the library in C.
-- `demo.cpp`: Demo program showcasing how to use the library in C++.
-- `Makefile`: Build script to compile the static library and both demo programs.
+Learning project to understand ANSI escape sequences, C library structure, and how to write header-only logic that works across both C and C++.
 
-## Usage
+## Tech stack
 
-Include `change_colour.h` in your C or C++ program and link with the static library (`libchangecolour.a`).
+- C (core library)
+- ANSI escape codes (terminal control)
+- Make (build system)
 
-### Example (C)
+## Getting started
 
-```c
-#include <stdio.h>
-#include "change_colour.h"
+Clone the repository:
 
-int main() {
-    change_colour_to_red();
-    printf("This is red!\n");
-
-    change_colour(COLOR_GREEN, STYLE_BOLD);
-    printf("This is bold green!\n");
-
-    reset_colour();
-    printf("Back to normal.\n");
-
-    return 0;
-}
+```bash
+git clone https://github.com/SanskarSontakke/Change-Colour-C-Lib.git
+cd Change-Colour-C-Lib
 ```
 
-### Example (C++)
-
-```cpp
-#include <iostream>
-#include "change_colour.h"
-
-int main() {
-    change_colour_to_red();
-    std::cout << "This is red!" << std::endl;
-
-    change_colour(COLOR_GREEN, STYLE_BOLD);
-    std::cout << "This is bold green!" << std::endl;
-
-    reset_colour();
-    std::cout << "Back to normal." << std::endl;
-
-    return 0;
-}
-```
-
-## Compilation
-
-To compile the library and the demo programs:
+Build the library and demo programs:
 
 ```bash
 make
 ```
 
-To run the C demo:
+Run the C demo:
 
 ```bash
 ./demo
 ```
 
-To run the C++ demo:
+Run the C++ demo:
 
 ```bash
 ./demo_cpp
 ```
 
-## Cleaning up
+## How it works
 
-To remove compiled files:
+The library defines two enums (`TextColor` for 8 ANSI colors and `TextStyle` for normal/bold) and a core function `change_colour(color, style)` that constructs and prints ANSI escape sequences (`\033[Xm` format). Helper functions like `change_colour_to_red()` wrap the core function. The `reset_colour()` function sends the reset sequence (`\033[0m`).
 
-```bash
-make clean
-```
+**File structure:**
+- `lib/change_colour.h`: Function prototypes, enums, C++ extern "C" wrappers
+- `lib/change_colour.c`: Implementation
+- `demo.c` and `demo.cpp`: Example programs showing usage in C and C++
+
+## Results / status
+
+Working demo. Both C and C++ examples compile and run successfully.
+
+## License
+
+MIT © 2026 Sanskar Sontakke
